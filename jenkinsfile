@@ -7,4 +7,16 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            script {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    commandline: 'Allure-3.0.0', // Must match the name from Step 3
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
+    }
 }
